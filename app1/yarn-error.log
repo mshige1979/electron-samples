@@ -1,0 +1,36 @@
+Arguments: 
+  /Users/shigeharu/.anyenv/envs/nodenv/versions/12.10.0/bin/node /usr/local/Cellar/yarn/1.22.18/libexec/bin/yarn.js init
+
+PATH: 
+  /Users/shigeharu/.anyenv/envs/nodenv/versions/12.10.0/bin:/Users/shigeharu/.anyenv/envs/nodenv/libexec:/Users/shigeharu/.anyenv/envs/nodenv/plugins/nodenv-vars/bin:/Users/shigeharu/.anyenv/envs/nodenv/plugins/node-build/bin:/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/bin:/Users/shigeharu/.anyenv/envs/nodenv/shims:/Users/shigeharu/.anyenv/envs/nodenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware Fusion.app/Contents/Public:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/shigeharu/Library/Android/sdk/emulator:/Users/shigeharu/Library/Android/sdk/tools:/Users/shigeharu/Library/Android/sdk/tools/bin:/Users/shigeharu/Library/Android/sdk/platform-tools:/usr/local/flutter/bin
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  12.10.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (/usr/local/Cellar/yarn/1.22.18/libexec/lib/cli.js:137143:13)
+      at Interface.emit (events.js:209:13)
+      at Interface._ttyWrite (readline.js:887:16)
+      at ReadStream.onkeypress (readline.js:191:10)
+      at ReadStream.emit (events.js:209:13)
+      at emitKeys (internal/readline/utils.js:433:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1153:36)
+      at ReadStream.emit (events.js:209:13)
+      at addChunk (_stream_readable.js:305:12)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
