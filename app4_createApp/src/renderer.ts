@@ -33,6 +33,15 @@ import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 
 console.log('👋 This message is being logged by "renderer.js", included via webpack');
 
+const appDialog = window.dialog;
+
 $(() => {
     console.log("aaaaaaa");
+
+    $(".btn-dir").on('click', function () {
+        console.log("bbbb");
+
+        appDialog.openDialog();
+
+    });
 });
