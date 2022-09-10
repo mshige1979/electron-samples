@@ -1,0 +1,17 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.wrapper {
+    margin: 10px;
+}
+
+.wrapper .content .countBlock {
+    width: 100px;
+    height: 100px;
+}
+
+.wrapper .content .countBlock .count {
+    font-size: 200%;
+}
