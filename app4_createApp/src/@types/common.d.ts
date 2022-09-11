@@ -1,9 +1,11 @@
 declare global {
     interface Window {
-        dialog: Dialog;
+        api: API;
     }
 }
 
-export interface Dialog {
-    openDialog: () => void;
+export interface API {
+    openDirDialog: () => Promise<string[]>;
+    openFileDialog: () => Promise<string[]>;
+    excelLoad: () => Promise<string[]>;
 }

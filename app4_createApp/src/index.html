@@ -6,9 +6,34 @@
 
   </head>
   <body>
-    <h1>💖 Hello World!2</h1>
-    <p>もしかしなくてもホットリロード効く</p>
+    <div class="wrapper">
+      <div class="header">
+        <h1>ダイアログテスト</h1>
+        <p>ファイルとフォルダの選択する</p>  
+      </div>
+  
+      <div class="container content">
+        <div class="group row">
+          <div class="col">
+            <p class="dir_path"></p>            
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn-dir btn btn-primary btn-lg btn-block">フォルダ選択</button>            
+          </div>
+        </div>
+        <div class="group row">
+          <div class="col">
+            <p class="file_path"></p>
+          </div>
+          <div class="col-3">
+            <button type="button" class="btn-file btn btn-primary btn-lg btn-block">ファイル選択</button>
+          </div>
+        </div>
 
-    <button type="button" class="btn-dir btn btn-primary btn-lg btn-block">フォルダ選択</button>
+        <button type="button" class="btn-xlsx btn btn-primary btn-lg btn-block">XLSX Load</button> 
+  
+      </div>
+  
+    </div>
   </body>
 </html>

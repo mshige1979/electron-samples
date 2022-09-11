@@ -33,15 +33,32 @@ import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 
 console.log('👋 This message is being logged by "renderer.js", included via webpack');
 
-const appDialog = window.dialog;
+// preload経由でアクセス
+const appAPI = window.api;
 
 $(() => {
-    console.log("aaaaaaa");
-
     $(".btn-dir").on('click', function () {
-        console.log("bbbb");
+        appAPI.openDirDialog().then((result: string[]) => {
+            console.log(result);
+            if (result === undefined) {
+                return;
+            }
+            $(".dir_path").text(result[0]);
+        });
+    });
+    $(".btn-file").on('click', function () {
+        appAPI.openFileDialog().then((result: string[]) => {
+            console.log(result);
+            if (result === undefined) {
+                return;
+            }
+            $(".file_path").text(result[0]);
+        });
+    });
 
-        appDialog.openDialog();
-
+    $(".btn-xlsx").on('click', function () {
+        appAPI.excelLoad().then((result) => {
+            console.log(result);
+        });
     });
 });
