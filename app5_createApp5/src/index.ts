@@ -15,8 +15,8 @@ if (require('electron-squirrel-startup')) {
 const createWindow = (): void => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    height: 768,
-    width: 1024,
+    height: 300,
+    width: 400,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
@@ -26,7 +26,7 @@ const createWindow = (): void => {
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
@@ -77,39 +77,25 @@ ipcMain.handle('excel-load', async () => {
   const Screen = electron.screen
   const size = Screen.getPrimaryDisplay().size
   console.log(size);
-  //let pos_x = size.width;
-  let pos_x = 1700;
-
+  
   // 子ウィンドウを作成
   const subWindow = new BrowserWindow({
     titleBarStyle: "hidden",
-    x: 1600,
-    y: 500,
+    x: 0,
+    y: 0,
+    width: size.width,
+    height: size.height,
     transparent: true,
     frame: false,       // フレームを非表示にする
     resizable: false,    // ウィンドウリサイズ禁止
     //opacity: 0.3,
-    alwaysOnTop: true
+    alwaysOnTop: true,
+    //fullscreen: true
   });
-  //subWindow.setAlwaysOnTop(true);
   subWindow.setWindowButtonVisibility(false)
   subWindow.setIgnoreMouseEvents(true)
 
-  /*
-  // 初期位置
-  let ts:any = null;
-  setTimeout(() => {
-    ts = setInterval(() => {
-      pos_x -= 30;
-      subWindow.setPosition(pos_x, 200, true);
-     }, 50)  
-  }, 300);
-  */
-  
   // 子ウィンドウ用 HTML
   subWindow.loadFile('./src/sub.html');
-  setTimeout(() => { 
-    subWindow.close();
-    //clearInterval(ts);
-  }, 5000)
+  
 })

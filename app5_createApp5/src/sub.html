@@ -4,15 +4,51 @@
 <head>
   <meta charset="UTF-8" />
   <title>Hello World!</title>
-
+  <script src="../node_modules/jquery/dist/jquery.js"></script>
 </head>
 
 <body>
   <div class="wrapper">
-    <div class="header">
-      <h1>Sub作成テスト</h1>
-    </div>
+    <div class="comment" style="position: fixed;"></div>
   </div>
 </body>
+<script>
+  $(() => {
+    // 5秒単位にメッセージを流す
+    setInterval(() => {
+      // 縦の位置を乱数で取得
+      const rnd = parseInt(Math.random() * 900);
+      let x = screen.width;
+      //let x = 100;
 
+      // 
+      const div = $("<div />").text("bbbbbbbb").css({
+        left: `${x}px`,
+        top: `${rnd}px`,
+        position: `absolute`,
+        "font-size": `60px`,
+      });
+      $(".comment").append(div);
+
+      div.get(0).animate(
+        // keyframes
+        [
+          {
+            left: `${x}px`,
+          },  // 0% の状態キーフレーム
+          {
+            left: '-100px',
+          }  // 100% の状態キーフレーム
+        ],
+        // options
+        {
+          duration: 5000, //再生時間（ミリ秒）
+          easing: 'linear', //イージング
+        },
+      );
+
+
+    }, 3000);
+  });
+    </script>
 </html>
