@@ -41,8 +41,8 @@ $(() => {
     
     // ボタン押下時
     $(".btn-win").on('click', function () {
-        // preload.tsのexcelLoadhへ連携
-        appAPI.excelLoad().then((result) => {
+        // preload.tsのopenWindowsへ連携
+        appAPI.openWindow().then((result) => {
             console.log(result);
         });
     });

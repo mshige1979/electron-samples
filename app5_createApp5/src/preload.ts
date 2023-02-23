@@ -4,9 +4,9 @@ import { ipcRenderer, contextBridge } from 'electron';
 
 // index.tsに定義したipcMain.handleの処理へ連携する
 contextBridge.exposeInMainWorld('api', {
-    excelLoad: () => {
-        console.log("xlsx load");
-        const result = ipcRenderer.invoke('excel-load');
+    openWindow: () => {
+        console.log("openWindow");
+        const result = ipcRenderer.invoke('open-window');
         return result;
     },
 });

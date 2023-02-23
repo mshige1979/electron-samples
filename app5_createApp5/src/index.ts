@@ -71,31 +71,39 @@ ipcMain.on('hey-open-my-dialog-now', (event: any) => {
 // メインプロセス <=> レンダラープロセス間通信
 // ==============================================
 
-// デイレクトりオープン
-ipcMain.handle('excel-load', async () => {
+// ウィンドウオープン
+ipcMain.handle('open-window', async () => {
   
   const Screen = electron.screen
   const size = Screen.getPrimaryDisplay().size
   console.log(size);
+  const displays = Screen.getAllDisplays();
+  console.log(displays);
   
-  // 子ウィンドウを作成
-  const subWindow = new BrowserWindow({
-    titleBarStyle: "hidden",
-    x: 0,
-    y: 0,
-    width: size.width,
-    height: size.height,
-    transparent: true,
-    frame: false,       // フレームを非表示にする
-    resizable: false,    // ウィンドウリサイズ禁止
-    //opacity: 0.3,
-    alwaysOnTop: true,
-    //fullscreen: true
-  });
-  subWindow.setWindowButtonVisibility(false)
-  subWindow.setIgnoreMouseEvents(true)
+  displays.map((item) => { 
+    const bounds = item.bounds;
 
-  // 子ウィンドウ用 HTML
-  subWindow.loadFile('./src/sub.html');
+    // 子ウィンドウを作成
+    const subWindow = new BrowserWindow({
+      titleBarStyle: "hidden",
+      x: bounds.x,
+      y: bounds.y,
+      width: bounds.width,
+      height: bounds.height,
+      transparent: true,
+      frame: false,       // フレームを非表示にする
+      resizable: false,    // ウィンドウリサイズ禁止
+      //opacity: 0.3,
+      alwaysOnTop: true,
+      //fullscreen: true
+    });
+    subWindow.setWindowButtonVisibility(false)
+    subWindow.setIgnoreMouseEvents(true)
+
+    // 子ウィンドウ用 HTML
+    subWindow.loadFile('./src/sub.html');
+
+  })
+
   
 })

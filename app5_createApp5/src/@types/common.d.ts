@@ -5,7 +5,5 @@ declare global {
 }
 
 export interface API {
-    openDirDialog: () => Promise<string[]>;
-    openFileDialog: () => Promise<string[]>;
-    excelLoad: () => Promise<string[]>;
+    openWindow: () => Promise<string[]>;
 }
