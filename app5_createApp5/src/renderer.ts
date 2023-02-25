@@ -57,6 +57,9 @@ $(() => {
     // ボタン押下時
     $(".btn-win").on('click', function () {
 
+        // インデックス初期化
+        index = 0;
+
         // URLを取得
         const url = $("#socketioFormControlInput").val();
         // ルームIDを取得
