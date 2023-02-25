@@ -20,4 +20,7 @@ module.exports = {
       ".sass",
     ],
   },
+  devServer: {
+    port: 9000,
+  },
 };

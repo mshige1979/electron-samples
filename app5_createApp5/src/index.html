@@ -3,19 +3,36 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Hello World!</title>
+  <title>試験</title>
 
 </head>
 
 <body>
   <div class="wrapper">
     <div class="header">
-      <h1>ウィンドウ作成テスト</h1>
+      <h3>コメントスクリーンもどき</h3>
+      <hr>
     </div>
 
-    <button type="button" class="btn-win btn btn-primary btn-lg btn-block">
-      子ウィンドウ作成
-    </button>
+    <div class="content">
+      <div class="mb-3">
+        <label for="socketioFormControlInput" class="form-label">サーバURL</label>
+        <input type="email" class="form-control" id="socketioFormControlInput" 
+          placeholder="socketioサーバのURL" value="http://localhost:3001">
+      </div>
+      <div class="mb-3">
+        <label for="roomidFormControlInput" class="form-label">ルームID</label>
+        <input type="email" class="form-control" id="roomidFormControlInput" 
+          placeholder="ルームID" value="testRoom">
+      </div>
+      <hr>
+    </div>
+
+    <div class="footer">
+      <button type="button" class="btn-win btn btn-primary btn-lg btn-block">
+        Start
+      </button>  
+    </div>
 
   </div>
 </body>

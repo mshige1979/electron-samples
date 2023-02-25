@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <title>Hello World!</title>
   <script src="../node_modules/jquery/dist/jquery.js"></script>
+  <script src="../node_modules/socket.io/client-dist/socket.io.min.js"></script>
 </head>
 
 <body>
@@ -13,42 +14,80 @@
   </div>
 </body>
 <script>
+  // preload経由でアクセス
+  const appAPI = window.api;
+
   $(() => {
-    // 5秒単位にメッセージを流す
-    setInterval(() => {
-      // 縦の位置を乱数で取得
-      const rnd = parseInt(Math.random() * 900);
-      let x = screen.width;
-      //let x = 100;
+    // 起動メッセージを送信
+    setTimeout(() => {
+        appAPI.initSubWindow().then((result) => {
+          console.log("called onSubWindowReply");
+          console.log(`result: `, result);
+        });      
+    }, 500);
 
-      // 
-      const div = $("<div />").text("bbbbbbbb").css({
-        left: `${x}px`,
-        top: `${rnd}px`,
-        position: `absolute`,
-        "font-size": `60px`,
+    // 親ウィンドウからURLとルームIDを取得
+    appAPI.onSubWindowReply((e, result) => {
+        // メインプロセスから転送されてきたメッセージを表示
+        console.log("called onSubWindowReply");
+        console.log(result);
+
+        setup(result.url, result.room_id);
+    });
+
+    const setup = (url, roomId) => {
+      // サーバーへ接続
+      const socket = io(`${url}?id=${roomId}`);
+      socket.on("connect", () => {
+        console.log(socket.connected);
       });
-      $(".comment").append(div);
 
-      div.get(0).animate(
-        // keyframes
-        [
+      // 初期化
+      setTimeout(() => {
+        // Join
+        socket.emit('join', {
+          room_id: roomId,
+          name: "テスト san"
+        });
+      }, 1000);
+
+      // 受信処理
+      socket.on("receiveMessage", (result) => {
+        console.log(result);
+
+        // 縦の位置を乱数で取得
+        const rnd = parseInt(Math.random() * 900);
+        let x = screen.width;
+
+         // 
+        const div = $("<div />").text(result).css({
+          left: `${x}px`,
+          top: `${rnd}px`,
+          position: `absolute`,
+          "font-size": `60px`,
+        });
+        $(".comment").append(div);
+
+        div.get(0).animate(
+          // keyframes
+          [
+            {
+              left: `${x}px`,
+            },  // 0% の状態キーフレーム
+            {
+              left: '-100px',
+            }  // 100% の状態キーフレーム
+          ],
+          // options
           {
-            left: `${x}px`,
-          },  // 0% の状態キーフレーム
-          {
-            left: '-100px',
-          }  // 100% の状態キーフレーム
-        ],
-        // options
-        {
-          duration: 5000, //再生時間（ミリ秒）
-          easing: 'linear', //イージング
-        },
-      );
+            duration: 5000, //再生時間（ミリ秒）
+            easing: 'linear', //イージング
+          },
+        );
+      });
 
+    }
 
-    }, 3000);
   });
     </script>
 </html>
