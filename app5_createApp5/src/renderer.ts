@@ -70,4 +70,19 @@ $(() => {
             console.log(result);
         });
     });
+
+    // ルームID生成
+    $(".btn-code").on("click", async () => {
+        // 適当に乱数で組み立て
+        const codes = "abcdefghijklmnopqrstuvwxyz0123456789";
+        const len = 10;
+        let str = "";
+
+        for (let i = 0; i < len; i++) {
+            const n = Math.random() * codes.length;
+            str += codes.substring(n, n + 1);
+        }
+
+        $("#roomidFormControlInput").val(str);
+    });
 });
