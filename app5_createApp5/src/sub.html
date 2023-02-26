@@ -47,7 +47,8 @@
         // Join
         socket.emit('join', {
           room_id: roomId,
-          name: "テスト san"
+          name: "テスト san",
+          new: true
         });
       }, 1000);
 
@@ -60,7 +61,7 @@
         let x = screen.width;
 
          // 
-        const div = $("<div />").text(result).css({
+        const div = $("<div />").text(result.msg).css({
           left: `${x}px`,
           top: `${rnd}px`,
           position: `absolute`,
