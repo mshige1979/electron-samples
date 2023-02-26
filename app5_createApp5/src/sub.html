@@ -66,6 +66,8 @@
           top: `${rnd}px`,
           position: `absolute`,
           "font-size": `60px`,
+          display: "block",
+          "white-space": "nowrap"
         });
         $(".comment").append(div);
 
@@ -76,7 +78,7 @@
               left: `${x}px`,
             },  // 0% の状態キーフレーム
             {
-              left: '-100px',
+              left: `-${div.width()}px`,
             }  // 100% の状態キーフレーム
           ],
           // options
