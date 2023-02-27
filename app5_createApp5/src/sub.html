@@ -37,7 +37,9 @@
 
     const setup = (url, roomId) => {
       // サーバーへ接続
-      const socket = io(`${url}?id=${roomId}`);
+      const socket = io(`${url}?id=${roomId}`, {
+        withCredentials: true
+      });
       socket.on("connect", () => {
         console.log(socket.connected);
       });
@@ -57,7 +59,7 @@
         console.log(result);
 
         // 縦の位置を乱数で取得
-        const rnd = parseInt(Math.random() * 900);
+        const rnd = parseInt(Math.random() * (screen.height * 0.9));
         let x = screen.width;
 
          // 

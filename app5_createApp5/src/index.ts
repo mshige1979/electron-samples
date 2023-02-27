@@ -98,8 +98,10 @@ ipcMain.handle('open-window', async (e: any) => {
         preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
       },
     });
-    subWindow.setWindowButtonVisibility(false)
-    subWindow.setIgnoreMouseEvents(true)
+    if (process.platform !== 'win32') {
+      subWindow.setWindowButtonVisibility(false);
+    }
+    subWindow.setIgnoreMouseEvents(true);
 
     // 子ウィンドウ用 HTML
     subWindow.loadFile('./src/sub.html');
